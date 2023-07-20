@@ -1,9 +1,15 @@
+# Set the working directory
 setwd("C:/Users/dimit/Desktop/ergasia3_bioinformatics/data/workspace/htseq_output/")
 
-library( "DESeq2" )
-??DESEq2
+# Packages
+library("DESeq2")
+library("ggplot2")
+
+# Upload our data from the NGS analysis
 origData <- read.csv("SRR10045016-17-18-19-20-21_counts.csv", sep = "\t", header = FALSE)
-origData
+head(origData)
+
+
 countdata <- origData[,2:7]
 head(countdata)
 sampleName <- c("rep1","rep2","rep3","_rep1","_rep2","_rep3")
