@@ -82,8 +82,6 @@ rld <- rlog(dds)
 plotPCA(rld)
 
 # Differential Expressed Genes
-library("ggplot2")
-
 qwe <- results(dds)
 names(qwe_DF)
 labels(qwe)
