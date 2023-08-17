@@ -31,19 +31,16 @@ res
 summary(res)
 
 # order by BaseMean
-
 results_ordered <- res[order(res$baseMean, decreasing = TRUE), ]
 results_ordered_DF <- data.frame(results_ordered)
 head(results_ordered_DF)
 
 # order by log2FoldChange
-
 loG2 <- res[order(res$log2FoldChange, decreasing = TRUE), ]
 loG2_DF <- data.frame(loG2)
 head(loG2)
 
 # order by padj
-
 padj_results <- res[order(res$padj, decreasing = TRUE), ]
 padj_DF <- data.frame(padj_results)
 head(padj_DF)
@@ -58,19 +55,16 @@ padj_001
 
 # 2nd criteria: log2FoldChange > 0.58
 # > 0.58 means 1.5 based on log2
-
 log2.cutoff <- 0.58
 log2_058 <- res[order(res$log2FoldChange > log2.cutoff), ]
 log2_058
 
 
 # Now we will concatenate our criteria creating a absolute value
-
 intro_res <- res[which(res$padj < padj.cutoff), ]
 # abs() method is used to get the absolute value that is positive value doesn't change and negative value converted into positive value.
 res_final <- intro_res[which(abs(intro_res$log2FoldChange) > log2.cutoff), ]
 res_final
-
 
 deseq2ResDF <- as.data.frame(res)
 # Examine this data frame
@@ -80,21 +74,14 @@ DESeq2::plotMA(res,ylim=c(-2,2))
 ##plot.default(deseq2ResDF$baseMean,deseq2ResDF$log2FoldChange,xlim=c(10,10000),ylim=c(-1,1),log = "x") ##same as plotMA(res)
 DESeq2::plotMA(res_final, ylim=c(-2,2))
 
-
-# 
 idx <- identify(res$baseMean, res$log2FoldChange)
 rownames(res)[idx]
 idx
 
-
 rld <- rlog(dds)
 plotPCA(rld)
 
-??plotPCA
-
-
 # Differential Expressed Genes
-
 library("ggplot2")
 
 qwe <- results(dds)
@@ -115,7 +102,6 @@ qwe_DF$diffexpressed[qwe_DF$log2FoldChange < -0.6 & qwe_DF$pvalue < 0.05] <- "DO
 # Create a new column "delabel" to qwe_DF, that will contain the name of genes differentially expressed (NA in case they are not)
 qwe_DF$delabel <- NA
 qwe_DF$delabel[qwe_DF$diffexpressed != "NO"] <- rownames(qwe_DF)[qwe_DF$diffexpressed != "NO"]
-
 
 # Visualization with ggplot package
 ggplot(data=qwe_DF, aes(x=log2FoldChange, y=-log10(pvalue), col=diffexpressed, label= delabel)) + 
