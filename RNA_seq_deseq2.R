@@ -21,7 +21,6 @@ coldata<-data.frame(sampleName,condition)
 head(coldata)
 ddsTable <- DESeqDataSetFromMatrix(countData = countdata, colData = coldata,
                                    design = ~ condition )
-??DESeqDataSetFromMatrix
 
 #########.....#########
 dds <- DESeq(ddsTable)
@@ -81,7 +80,7 @@ idx
 rld <- rlog(dds)
 plotPCA(rld)
 
-# Differential Expressed Genes
+# Differential Expressed Genes (Visualization Preparation)
 qwe <- results(dds)
 names(qwe_DF)
 labels(qwe)
