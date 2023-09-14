@@ -1,6 +1,3 @@
-# Set the working directory
-setwd("C:/Users/dimit/Desktop/ergasia3_bioinformatics/data/workspace/htseq_output/")
-
 # Packages
 library("DESeq2")
 library("ggplot2")
