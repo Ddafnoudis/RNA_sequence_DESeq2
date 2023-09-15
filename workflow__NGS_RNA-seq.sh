@@ -12,6 +12,7 @@ fastqc -t 4 *fastq -o ../fastqc_output
     ILLUMINACLIP:trimmomaticAdapters/TruSeq3-PE-2.fa:2:30:10 TRAILING:30
 
 
+# STAR is a tool for alignment
 # Create the genome index
  STAR --runThreadN 2 --runMode genomeGenerate --genomeDir STAR_index_chr19/ --genomeFastaFiles genome/chr19.fa --sjdbGTFfile genome/chr19_Homo_sapiens.GRCh38.95.gtf
         STAR --runThreadN 2 --runMode genomeGenerate --genomeDir STAR_index_chr19/ --genomeFastaFiles genome/chr19.fa --sjdbGTFfile genome/chr19_Homo_sapiens.GRCh38.95.gtf
@@ -23,11 +24,10 @@ for i in {16..21}; do
 done                      
 
 
-###  NOTE: STAR's mapping may take ONE DAY to finish. It depents from the  ###
-###  size of the files and also the genome. It is advisable to create a    ###
-###  tmux-session first and then create a .sh file, running                ###
-###  a for loop.                                                           ###
-###  If not using a cluster then don't shut down your laptop               ###
+###  NOTE: STAR's mapping may take ONE DAY to finish. It depents from the   ###
+###  size of the files and also the genome. It is advisable to create a     ###
+###  tmux-session first and then create a .sh file, running a for loop.     ###
+###  It is important to not shut down your laptop or computer               ###
 
 # Mapping with STAR(just the first sequence)
 STAR --runThreadN 8 --genomeDir STAR_index_chr19/ --readFilesIn trim_output/SRR10045016_1P.fastq trim_output/SRR10045016_2P.fastq --sjdbGTFfile genome/chr19_Homo_sapiens.GRCh38.95.gtf --outFileNamePrefix star_output/SRR10045016/
