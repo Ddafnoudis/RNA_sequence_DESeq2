@@ -1,7 +1,7 @@
 # Fastqc the 6 files
 fastqc -t 4 *fastq -o ../fastqc_output
 
-# Trimmomatic 
+# Trimmomatic --> Do it for every fastq file
  trimmomatic PE -threads 4 
     ../data_chr19/SRR10045016_1.fastq 
     ../data_chr19/SRR10045016_2.fastq 
@@ -10,10 +10,6 @@ fastqc -t 4 *fastq -o ../fastqc_output
     ../fastqc_trimmed_output/SRR10045016_2P.fastq 
     ../fastqc_trimmed_output/SRR10045016_2U.fastq 
     ILLUMINACLIP:trimmomaticAdapters/TruSeq3-PE-2.fa:2:30:10 TRAILING:30
-
-# Trimmomatic "for loop"
-???
-
 
 
 # Create the genome index
