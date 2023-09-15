@@ -1,6 +1,3 @@
-# Download data, genome, folders
-wget"https://uoa2-my.sharepoint.com/:u:/g/personal/nikosp_o365_uoa_gr/EUuyAqNvot9JlzRFJhmkq_8BQPbPM5z1-sb0CubekuDJEQ?e=tQg7ay&download=1" -O ex3.tar --no-check-certificate
-
 # Fastqc the 6 files
 fastqc -t 4 *fastq -o ../fastqc_output
 
